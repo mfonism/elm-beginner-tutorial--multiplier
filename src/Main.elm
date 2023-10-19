@@ -1,7 +1,7 @@
 module Main exposing (main)
 
 import Browser
-import Html exposing (Html, text)
+import Html exposing (Html, div, input, text)
 
 
 main : Program () Model msg
@@ -26,12 +26,18 @@ init =
 
 view : Model -> Html msg
 view model =
-    case model.maybeNumber of
-        Nothing ->
-            text "Please enter a number!"
+    div []
+        [ div []
+            [ input []
+                []
+            ]
+        , case model.maybeNumber of
+            Nothing ->
+                text "Please enter a number!"
 
-        Just number ->
-            text ("You have entered the number: " ++ String.fromInt number)
+            Just number ->
+                text ("You have entered the number: " ++ String.fromInt number)
+        ]
 
 
 update : msg -> Model -> Model

@@ -49,4 +49,4 @@ update : Msg -> Model -> Model
 update message oldModel =
     case message of
         UserEnteredInput inputString ->
-            { maybeNumber = Just 69 }
+            { maybeNumber = String.toInt inputString }

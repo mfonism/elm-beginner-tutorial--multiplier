@@ -41,7 +41,21 @@ view model =
                 text "Please enter a number!"
 
             Just number ->
-                text ("You have entered the number: " ++ String.fromInt number)
+                div []
+                    [ div []
+                        [ text
+                            ("You have entered the number: "
+                                ++ String.fromInt number
+                            )
+                        ]
+                    , div []
+                        [ text
+                            (String.fromInt number
+                                ++ " multiplied by 100 is: "
+                                ++ String.fromInt (number * 100)
+                            )
+                        ]
+                    ]
         ]
 
 

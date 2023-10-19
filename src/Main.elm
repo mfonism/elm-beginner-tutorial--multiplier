@@ -2,9 +2,10 @@ module Main exposing (main)
 
 import Browser
 import Html exposing (Html, div, input, text)
+import Html.Events exposing (onInput)
 
 
-main : Program () Model msg
+main : Program () Model Msg
 main =
     Browser.sandbox
         { init = init
@@ -18,17 +19,21 @@ type alias Model =
     }
 
 
+type Msg
+    = UserEnteredInput String
+
+
 init : Model
 init =
     { maybeNumber = Nothing
     }
 
 
-view : Model -> Html msg
+view : Model -> Html Msg
 view model =
     div []
         [ div []
-            [ input []
+            [ input [ onInput UserEnteredInput ]
                 []
             ]
         , case model.maybeNumber of
@@ -40,6 +45,8 @@ view model =
         ]
 
 
-update : msg -> Model -> Model
+update : Msg -> Model -> Model
 update message oldModel =
-    oldModel
+    case message of
+        UserEnteredInput inputString ->
+            { maybeNumber = Just 69 }
